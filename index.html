@@ -10,16 +10,26 @@
 </head>
 
 <body>
+    <h2 id="clock">00:00:00</h2>
+    <p>----------------------</p>
     <form id="login-form" class="hidden">
         <input required maxlength="15" type="text" placeholder="What is your name?" />
         <input type="submit" value="Log In" />
     </form>
-    <h2 id="clock">00:00:00</h2>
     <h1 id="greeting" class="hidden"></h1>
+    <p>----------------------</p>
     <h3>Set timer</h3>
     <h3 id="timer">00:00:00</h3>
     <button id="start-timer">Start</button>
-    <button id="stop-timer">Stop</button>
+    <button id="pause-timer">Pause</button>
+    <button id="reset-timer">Reset</button>
+    <form id="totaltime-submit">
+        <select name="totaltimeofsubject" id="subject-select">
+            <option value="">--Please choose an subject--</option>
+        </select>
+        <input id="timeadd-button" type="button" value="Add Time"/>
+    </form>
+    <p>----------------------</p>
     <h3>What are you plan to do?</h3>
     <form id="todo-form">
         <input id="work-form" type="text" placeholder="Write a To Do" required>
@@ -28,16 +38,17 @@
         <input type="submit" value="Submit" />
     </form>
     <ul id="todo-list"></ul>
-
+    <p>----------------------</p>
     <p>List of Work</p>
     <table id="work-columns">
-        <colgroup span="4" class="worklist-columns"></colgroup>
+        <colgroup span="5" class="worklist-columns"></colgroup>
         <tr>
             <th>Work</th>
             <th>Subject</th>
             <th>Format</th>
+            <th>Total Usage Time</th>
             <th>Delete</th>
-          </tr>
+        </tr>
     </table>
     <script src="js/greeting.js"></script>
     <script src="js/clock.js"></script>

@@ -4,6 +4,8 @@ const subjectInput = document.querySelector("#subject-form");
 const formatInput = document.querySelector("#format-form");
 const toDoList = document.getElementById("todo-list");
 const worktable = document.getElementById("work-columns");
+const subjectDropdown = document.querySelector("#subject-select");
+const totalTimeAddButton = document.querySelector("#timeadd-button");
 
 const TODOS_KEY = "todos";
 
@@ -14,32 +16,45 @@ function saveToDos() {
 }
 
 
+
+
 function deleteTodo(event) {
-    const li = event.target.parentElement.parentElement;
-    li.remove();
-    toDos = toDos.filter((targetId) => targetId.id !== parseInt(li.id));
+    const tr = event.target.parentElement.parentElement;
+    tr.remove();
+    const deleteTargetSubject = subjectDropdown.querySelector(`[id="${tr.id}"]`);
+    deleteTargetSubject.remove();
+    toDos = toDos.filter((targetId) => targetId.id !== parseInt(tr.id));
     saveToDos();
 }
+
 
 function paintToDo(newToDo) {
     const tr = document.createElement("tr");
     tr.id = newToDo.id;
-    const th1 =document.createElement("th");
+    const th1 = document.createElement("th");
     th1.innerText = newToDo.text;
-    const th2 =document.createElement("th");
+    const th2 = document.createElement("th");
     th2.innerText = newToDo.subject;
-    const th3 =document.createElement("th");
+    const th3 = document.createElement("th");
     th3.innerText = newToDo.format;
-    const th4 =document.createElement("th");
+    const th4 = document.createElement("th");
+    th4.innerText = newToDo.total_usage_time;
+    const th5 = document.createElement("th");
     const button = document.createElement("button");
     button.innerText = "❌";
-    th4.appendChild(button);
+    th5.appendChild(button);
     tr.appendChild(th1);
     tr.appendChild(th2);
     tr.appendChild(th3);
     tr.appendChild(th4);
+    tr.appendChild(th5);
     worktable.appendChild(tr);
     button.addEventListener("click", deleteTodo);
+
+    const option = document.createElement("option");
+    option.id = newToDo.id;
+    option.innerText = newToDo.text;
+    subjectDropdown.appendChild(option);
 }
 
 function handleToDoSubmit(event) {
@@ -55,13 +70,19 @@ function handleToDoSubmit(event) {
         subject: newSubject,
         format: newFormat,
         id: Date.now(),
+        total_usage_time: "00:00:00",
     };
     toDos.push(newTodoObj);
     paintToDo(newTodoObj);
     saveToDos();
 }
 
+function addTimeInObject() {
+    
+}
+
 toDoForm.addEventListener("submit", handleToDoSubmit);
+totalTimeAddButton.addEventListener("click", addTimeInObject);
 
 const savedToDos = localStorage.getItem(TODOS_KEY);
 
@@ -70,3 +91,4 @@ if (savedToDos !== null) {
     toDos = parsedToDos;
     parsedToDos.forEach(paintToDo);
 }
+
