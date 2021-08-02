@@ -1,42 +1,46 @@
-const subjectForm = document.getElementById("subject-form");
-const subjectInput = document.querySelector("#subject-form input");
-const subjectDropdown = document.querySelector("#subject-select");
-const subjectDeleteButton = document.querySelector("#subject-form button");
+// const subjectForm = document.getElementById("subject-form");
+// const subjectInput = document.querySelector("#subject-form input");
+// const subjectDropdown = document.querySelector("#subject-select");
+// const subjectDeleteButton = document.querySelector("#subject-form button");
 
-const SUBJECT_KEY = "subjects";
+// const SUBJECT_KEY = "subjects";
 
-let subjectList=[];
+// // https://stackoverflow.com/questions/7843355/submit-two-forms-with-one-button
 
-function saveSubjects() {
-    localStorage.setItem(SUBJECT_KEY, JSON.stringify(subjectList));
-}
+// let subjectList=[];
 
-function paintSubject(newSubject) {
-    const option = document.createElement("option");
-    option.id = newSubject.id;
-    option.innerText = newSubject.text;
-    subjectDropdown.appendChild(option);
-}
+// function saveSubjects() {
+//     localStorage.setItem(SUBJECT_KEY, JSON.stringify(subjectList));
+// }
 
-function handleSubjectSubmit(event) {
-    event.preventDefault();
-    const newSubject = subjectInput.value;
-    subjectInput.value = "";
-    const newSubjectObj = {
-        text: newSubject,
-        id: Date.now(),
-    };
-    subjectList.push(newSubjectObj);
-    paintSubject(newSubjectObj);
-    saveSubjects();
-}
+// function paintSubject(newSubject) {
+//     const option = document.createElement("option");
+//     option.id = newSubject.id;
+//     option.innerText = newSubject.text;
+//     subjectDropdown.appendChild(option);
+// }
 
-subjectDeleteButton.addEventListener("submit",deleteSubject);
+// function handleSubjectSubmit(event) {
+//     event.preventDefault();
+//     const newSubject = subjectInput.value;
+//     subjectInput.value = "";
+//     const newSubjectObj = {
+//         text: newSubject,
+//         id: Date.now(),
+//     };
+//     subjectList.push(newSubjectObj);
+//     paintSubject(newSubjectObj);
+//     saveSubjects();
+// }
 
-const savedSubjects = localStorage.getItem(SUBJECT_KEY);
+// subjectDeleteButton.addEventListener("submit",deleteSubject);
+       
 
-if (savedSubjects !== null) {
-    const parsedSubjects = JSON.parse(savedSubjects);
-    subjectList=parsedSubjects;
-    parsedSubjects.forEach(paintSubject)
-}
+
+// const savedSubjects = localStorage.getItem(SUBJECT_KEY);
+
+// if (savedSubjects !== null) {
+//     const parsedSubjects = JSON.parse(savedSubjects);
+//     subjectList=parsedSubjects;
+//     parsedSubjects.forEach(paintSubject)
+// }

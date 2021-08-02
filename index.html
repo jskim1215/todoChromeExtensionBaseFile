@@ -16,28 +16,34 @@
     </form>
     <h2 id="clock">00:00:00</h2>
     <h1 id="greeting" class="hidden"></h1>
-
-
+    <h3>Set timer</h3>
+    <h3 id="timer">00:00:00</h3>
+    <button id="start-timer">Start</button>
+    <button id="stop-timer">Stop</button>
     <h3>What are you plan to do?</h3>
     <form id="todo-form">
-        <input type="text" placeholder="Write a To Do" required>
+        <input id="work-form" type="text" placeholder="Write a To Do" required>
+        <input id="subject-form" type="text" placeholder="Subject of Todo" required>
+        <input id="format-form" type="text" placeholder="Format of Todo" required>
+        <input type="submit" value="Submit" />
     </form>
-    <form id="subject-form">
-        <input type="text" placeholder="Subject of Todo" required>
-    </form>
-    <form id="format-form">
-        <input type="text" placeholder="Format of Todo" required>
-    </form>
-    <select name="pets" id="subject-select">
-        <option value="">--Please choose an subject--</option>
-    </select>
     <ul id="todo-list"></ul>
+
+    <p>List of Work</p>
+    <table id="work-columns">
+        <colgroup span="4" class="worklist-columns"></colgroup>
+        <tr>
+            <th>Work</th>
+            <th>Subject</th>
+            <th>Format</th>
+            <th>Delete</th>
+          </tr>
+    </table>
     <script src="js/greeting.js"></script>
     <script src="js/clock.js"></script>
     <script src="js/background.js"></script>
     <script src="js/todo.js"></script>
-    <script src="js/subject.js"></script>
-    <script src="js/format.js"></script>
+    <script src="js/timer.js"></script>
 </body>
 
 </html>
