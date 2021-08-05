@@ -9,14 +9,13 @@ const totalTimeAddButton = document.querySelector("#timeadd-button");
 
 const TODOS_KEY = "todos";
 
+const savedToDos = localStorage.getItem(TODOS_KEY);
+
 let toDos = [];
 
 function saveToDos() {
     localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
 }
-
-
-
 
 function deleteTodo(event) {
     const tr = event.target.parentElement.parentElement;
@@ -78,13 +77,13 @@ function handleToDoSubmit(event) {
 }
 
 function addTimeInObject() {
-    
+
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
 totalTimeAddButton.addEventListener("click", addTimeInObject);
 
-const savedToDos = localStorage.getItem(TODOS_KEY);
+
 
 if (savedToDos !== null) {
     const parsedToDos = JSON.parse(savedToDos);
